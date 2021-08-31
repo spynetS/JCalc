@@ -14,7 +14,7 @@ public class Maths {
                 {   //just to se if we can convert the number into a float
                     //if we cant we know it is not a number
                     float tester = Float.parseFloat(String.valueOf(ch));
-                    System.out.println("float");
+                    //System.out.println("float");
                     return true;
                 }
                 catch (Exception e){

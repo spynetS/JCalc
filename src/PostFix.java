@@ -34,7 +34,7 @@ public class PostFix {
         String[] chars = eq.split(" ");
         for(String c : chars)
         {
-            System.out.println(c);
+           // System.out.println(c);
             if(Maths.isLetterOrNumber(c))
             {
                 operands.push(c);
@@ -47,7 +47,7 @@ public class PostFix {
                 System.out.println(calculatePiece(term1,term2,c.toCharArray()[0]));
                 operands.push(calculatePiece(term1,term2,c.toCharArray()[0]));
             }
-            System.out.println(operands);
+            //System.out.println(operands);
 
         }
 

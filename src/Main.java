@@ -1,3 +1,7 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 public class Main {
 
     //Main will take care of in and output
@@ -5,7 +9,20 @@ public class Main {
 
     public static void main(String[] args)
     {
-       PostFix pp = new PostFix();
-       System.out.println(pp.getAnswer("5.5 5 + 10.5 4 * -"));
+
+        BufferedReader reader = new BufferedReader(
+                new InputStreamReader(System.in));
+
+        // Reading data using readLine
+        String exp = null;
+        try {
+            exp = reader.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        PostFix pp = new PostFix();
+        System.out.println(exp);
+        System.out.println(InfixToPostfix.infixToPostfix(exp));
+        System.out.println(pp.getAnswer(InfixToPostfix.infixToPostfix(exp)));
     }
 }

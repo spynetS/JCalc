@@ -32,11 +32,6 @@ class InfixToPostfix
     // The main method that converts
     // given infix expression
     // to postfix expression.
-    public static String infixFormater(String string)
-    {
-        return string;
-    }
-
     public static String infixToPostfix(String exp)
     {
         // initializing empty String for result
@@ -53,7 +48,7 @@ class InfixToPostfix
             // operand, add it to output.
             if (Character.isLetterOrDigit(c)){
 
-                    result += c;
+                    result += c+" ";
             }
 
             // If the scanned character is an '(',
@@ -68,7 +63,7 @@ class InfixToPostfix
             {
                 while (!stack.isEmpty() &&
                         stack.peek() != '(')
-                    result += stack.pop();
+                    result += stack.pop()+" ";
 
                 stack.pop();
             }
@@ -77,7 +72,7 @@ class InfixToPostfix
                 while (!stack.isEmpty() && Prec(c)
                         <= Prec(stack.peek())){
 
-                    result +=  stack.pop();
+                    result +=  stack.pop()+" ";
                 }
                 stack.push(c);
             }
@@ -88,7 +83,7 @@ class InfixToPostfix
         while (!stack.isEmpty()){
             if(stack.peek() == '(')
                 return "Invalid Expression";
-            result += stack.pop();
+            result += stack.pop()+" ";
         }
         return result;
     }
@@ -97,6 +92,9 @@ class InfixToPostfix
     public static void main(String[] args)
     {
         String exp = "55+5-8*4";
+        PostFix pp = new PostFix();
+        System.out.println(exp);
         System.out.println(infixToPostfix(exp));
+        System.out.println(pp.getAnswer(infixToPostfix(exp)));
     }
 }
