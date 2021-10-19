@@ -4,7 +4,6 @@ public class PostFix {
 
     String calculatePiece(float term1,float tem2,char operator)
     {
-
         if(operator=='*')
         {
             return String.valueOf(term1*tem2);
@@ -56,7 +55,7 @@ public class PostFix {
 
         }
         if(operands.size()<2)
-            return operands.peek();
+            return ""+operands;
         else
             return "ERROR";
     }
