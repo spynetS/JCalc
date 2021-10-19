@@ -54,7 +54,7 @@ public class PostFix {
             }
 
         }
-        if(operands.size()<2)
+        if(operands.size()<=1)
             return operands.peek();
         else
             return "ERROR";
