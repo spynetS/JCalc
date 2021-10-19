@@ -4,6 +4,7 @@ public class PostFix {
 
     String calculatePiece(float term1,float tem2,char operator)
     {
+
         if(operator=='*')
         {
             return String.valueOf(term1*tem2);
@@ -21,7 +22,7 @@ public class PostFix {
         }
         else if(operator=='!')
         {
-            return String.valueOf(term1/tem2);
+            return String.valueOf(Math.pow(term1,tem2));
         }
         return "";
     }
@@ -41,10 +42,16 @@ public class PostFix {
             }
             if(!operands.isEmpty()&&Maths.isOperator(c))
             {
-                float term2= Float.parseFloat(operands.pop());
-                float term1= Float.parseFloat(operands.pop());
-                System.out.println(term1+"-"+term2);
-                System.out.println(calculatePiece(term1,term2,c.toCharArray()[0]));
+
+                float term2 = 0;
+                float term1 = 0;
+                try {
+                    term2 = Float.parseFloat(operands.pop());
+                }catch (Exception e){}
+                try {
+                    term1 = Float.parseFloat(operands.pop());
+                }catch (Exception e){}
+                //System.out.println(calculatePiece(term1,term2,c.toCharArray()[0]));
                 operands.push(calculatePiece(term1,term2,c.toCharArray()[0]));
             }
             //System.out.println(operands);

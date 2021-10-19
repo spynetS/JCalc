@@ -22,7 +22,7 @@ public class Main {
         }
         PostFix pp = new PostFix();
         System.out.println(exp);
-        System.out.println(InfixToPostfix.infixToPostfix(exp));
+        System.out.println("yes "+InfixToPostfix.infixToPostfix(exp));
         System.out.println(pp.getAnswer(InfixToPostfix.infixToPostfix(exp)));
     }
 }

@@ -91,7 +91,7 @@ class InfixToPostfix
     // Driver method
     public static void main(String[] args)
     {
-        String exp = "55+5-8*4";
+        String exp = "2!3";
         PostFix pp = new PostFix();
         System.out.println(exp);
         System.out.println(infixToPostfix(exp));
