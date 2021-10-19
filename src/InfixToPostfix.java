@@ -99,7 +99,7 @@ class InfixToPostfix
     // Driver method
     public static void main(String[] args)
     {
-        String exp = "-21+2";
+        String exp = "10.0+2";
         PostFix pp = new PostFix();
         System.out.println(exp);
         System.out.println(infixToPostfix(exp));

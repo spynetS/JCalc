@@ -25,6 +25,21 @@ public class Maths {
         return true;
     }
 
+    public static String switchVariable(String eq, String varName, float value)
+    {
+        char[] chars = eq.toCharArray();
+        String newString = "";
+        for(char c : chars)
+        {
+            if((Character.toString(c)).equals(varName))
+            {
+                newString+= Float.toString(value);
+            }
+            else newString+=c;
+        }
+        return newString;
+    }
+
     public static boolean isOperator(String number)
     {
         char[] chars = number.toCharArray();
