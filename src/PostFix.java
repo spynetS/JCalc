@@ -20,7 +20,7 @@ public class PostFix {
         {
             return String.valueOf(term1/tem2);
         }
-        else if(operator=='!')
+        else if(operator=='^')
         {
             return String.valueOf(Math.pow(term1,tem2));
         }
@@ -51,14 +51,14 @@ public class PostFix {
                 try {
                     term1 = Float.parseFloat(operands.pop());
                 }catch (Exception e){}
-                //System.out.println(calculatePiece(term1,term2,c.toCharArray()[0]));
                 operands.push(calculatePiece(term1,term2,c.toCharArray()[0]));
             }
-            //System.out.println(operands);
 
         }
-
-        return "result= "+operands;
+        if(operands.size()<2)
+            return operands.peek();
+        else
+            return "ERROR";
     }
 
 }
