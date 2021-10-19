@@ -48,7 +48,7 @@ class InfixToPostfix
 
             // If the scanned character is an
             // operand, add it to output.
-            if (Character.isLetterOrDigit(c)){
+            if (Character.isLetterOrDigit(c)||c=='.'){
 
                 //If its a number we dont add a space
                 if(i>0&&Prec(exp.charAt(i-1))==-1&&exp.charAt(i-1)!='(') {

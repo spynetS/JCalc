@@ -21,7 +21,7 @@ public class Main {
                 e.printStackTrace();
             }
             PostFix pp = new PostFix();
-            if(exp.equals("SET X"))
+            if(exp.equals("set x"))
             {
                 reader = new BufferedReader(
                         new InputStreamReader(System.in));
@@ -33,12 +33,12 @@ public class Main {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                x = Float.parseFloat(exp2);
+                x = Float.parseFloat(pp.getAnswer(InfixToPostfix.infixToPostfix(exp2)));
                 System.out.println("x is set to "+x);
             }
             else
-                //System.out.println(pp.getAnswer(InfixToPostfix.infixToPostfix(Maths.switchVariable(exp,"x",x))));
-                System.out.println((Maths.switchVariable(exp,"x",x)));
+                System.out.println(pp.getAnswer(InfixToPostfix.infixToPostfix(Maths.switchVariable(exp,"x",x))));
+                //System.out.println((Maths.switchVariable(exp,"x",x)));
         }
     }
 }
