@@ -1,3 +1,4 @@
+import java.util.Map;
 
 public class Maths {
 
@@ -25,18 +26,20 @@ public class Maths {
         return true;
     }
 
-    public static String switchVariable(String eq, String varName, float value)
+    public static String switchVariable(String eq, Map<String, Float> vars)
     {
         char[] chars = eq.toCharArray();
         String newString = "";
         for(char c : chars)
         {
-            if((Character.toString(c)).equals(varName))
-            {
-                newString+= Float.toString(value);
-            }
-            else newString+=c;
+                if(vars.containsKey(Character.toString(c)))
+                {
+                    newString+= Float.toString(vars.get(Character.toString(c)));
+                }
+                else newString+=c;
+
         }
+        System.out.println(newString);
         return newString;
     }
 
