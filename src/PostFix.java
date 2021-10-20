@@ -23,6 +23,10 @@ public class PostFix {
         {
             return String.valueOf(Math.pow(term1,tem2));
         }
+        else if(operator=='!')
+        {
+            return String.valueOf(Math.sqrt(tem2));
+        }
         return "";
     }
 

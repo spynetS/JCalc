@@ -24,6 +24,7 @@ class InfixToPostfix
                 return 2;
 
             case '^':
+            case '!':
                 return 3;
         }
         return -1;
@@ -44,8 +45,10 @@ class InfixToPostfix
 
         for (int i = 0; i<exp.length(); ++i)
         {
-            char c = exp.charAt(i);
 
+            char c = exp.charAt(i);
+            if(c == '!')
+                result += " 0";
             // If the scanned character is an
             // operand, add it to output.
             if (Character.isLetterOrDigit(c)||c=='.'){
@@ -71,7 +74,9 @@ class InfixToPostfix
             {
                 while (!stack.isEmpty() &&
                         stack.peek() != '(')
-                    result += " "+stack.pop();
+                {
+                        result += " "+stack.pop();
+                }
 
                 stack.pop();
             }
@@ -93,6 +98,7 @@ class InfixToPostfix
                 return "Invalid Expression";
             result += " "+stack.pop();
         }
+        //System.out.println(result.substring(1));
         return result.substring(1);
     }
 
