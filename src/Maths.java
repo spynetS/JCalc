@@ -39,7 +39,6 @@ public class Maths {
                 else newString+=c;
 
         }
-        System.out.println(newString);
         return newString;
     }
 
