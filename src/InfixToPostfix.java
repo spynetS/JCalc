@@ -31,14 +31,14 @@ class InfixToPostfix
     }
 
     //Adds spaces to the expression '5+5' => '5 + 5'
-    private static String addSpaces(String eq)
+    public static String addSpaces(String eq)
     {
         Debug.error("Before spaces "+ eq);
         String eqWithSpaces = "";
         for(int i = 0;i<eq.length();i++)
         {
             char c = eq.charAt(i);
-            if (i<=0)
+            if (i<=0&&Maths.isOperator(c))
             {
                 eqWithSpaces+= c+" ";
             }

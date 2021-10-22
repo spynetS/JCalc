@@ -20,13 +20,13 @@ public class Maths {
     //
     public static String switchVariable(String eq, Map<String, Float> vars)
     {
-        char[] chars = eq.toCharArray();
+        String[] chars = InfixToPostfix.addSpaces(eq).split(" ");
         String newString = "";
-        for(char c : chars)
+        for(String c : chars)
         {
-                if(vars.containsKey(Character.toString(c)))
+                if(vars.containsKey(c))
                 {
-                    newString+= Float.toString(vars.get(Character.toString(c)));
+                    newString+= Float.toString(vars.get(c));
                 }
                 else newString+=c;
 

@@ -12,10 +12,16 @@ public class Main {
     //Main will take care of in and output
     String lastAnswer;
     static HashMap<String,Float> vars = new HashMap<String, Float>();
+
+    private static void AddConstatns()
+    {
+        vars.put("pi",3.141592653589793238f);
+    }
+
     public static void main(String[] args)
     {
-        System.out.println("Type help for help");
-
+        Debug.log("Type help for help");
+        AddConstatns();
         while(true){
             BufferedReader reader = new BufferedReader(
                     new InputStreamReader(System.in));
