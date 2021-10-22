@@ -50,6 +50,11 @@ public class Main {
                }
                Debug.log("Debug mode set to "+exp.split(" ")[1]);
            }
+           else if(exp.equals("clear"))
+           {
+               //Clear console
+
+           }
            else if(exp.equals("help"))
            {
                Debug.log("If you want to set variables write 'x=5*5' with anny letter (not words) ");

@@ -35,31 +35,58 @@ class InfixToPostfix
     // to postfix expression.
 
 
-    public static String negativeNumbers(String eq)
+    private static String addSpaces(String eq)
     {
-        Debug.error("Before negative numbers controlling "+eq);
-        String newEq = "";
+        Debug.error("Before spaces "+ eq);
+        String eqWithSpaces = "";
         for(int i = 0;i<eq.length();i++)
         {
             char c = eq.charAt(i);
+            if (i<=0)
+            {
+                eqWithSpaces+= c+" ";
+            }
+            else if(Maths.isOperator(c)&&!Maths.isOperator(eq.charAt(i+1)))
+            {
+                eqWithSpaces+= " "+c+" ";
+            }
+            else if(Maths.isOperator(c))
+            {
+                eqWithSpaces+= " "+c;
+            }
+            else
+                eqWithSpaces += c;
+        }
+        Debug.error("After spaces "+ eqWithSpaces);
+        return eqWithSpaces;
+    }
 
-            if(c=='-')
+    public static String negativeNumbers(String eq)
+    {
+        eq = addSpaces(eq);
+        Debug.error("Before negative numbers controlling "+eq);
+        String newEq = "";
+        String[] strings = eq.split(" ");
+        for(int i = 0;i<strings.length;i++)
+        {
+            String c = strings[i];
+            if(c.equals("-"))
             {
                 try {
-                    if(!Maths.isOperator(eq.charAt(i+1))) {
+                    if(!Maths.isOperator(strings[i+1]))//if the thing after the minus sign is a number {
                         try {
-                            if (Maths.isOperator(eq.charAt(i - 1))) {
-                                newEq += "(0-"+eq.charAt(i+1)+")";
+                            if (Maths.isOperator(strings[i-1])) {
+                                newEq += "(0-"+strings[i+1]+")";
                                 i++;
                             }
                             else
                                 newEq += c;
                         } catch (Exception e) {
-                            newEq += "(0-"+eq.charAt(i+1)+")";
+                            newEq += "(0-"+strings[i+1]+")";
                             i++;
                         }
-                    }
-                }catch (Exception e1){}
+
+                }catch (Exception e1){Debug.error("Error "+e1.toString());}
             }
             else
             {
@@ -143,7 +170,7 @@ class InfixToPostfix
     // Driver method
     public static void main(String[] args)
     {
-        String exp = "-3*-4";
+        String exp = "-50*-50";
         PostFix pp = new PostFix();
         System.out.println(exp);
         System.out.println(infixToPostfix(exp));
