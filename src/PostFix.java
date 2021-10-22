@@ -2,31 +2,31 @@ import java.util.Stack;
 
 public class PostFix {
 
-    String calculatePiece(float term1,float tem2,char operator)
+    String calculatePiece(float term1,float term2,char operator)
     {
-        Debug.error("calculation "+term1+" "+operator+" "+tem2);
+        Debug.error("calculation "+term1+" "+operator+" "+term2);
         if(operator=='*')
         {
-            return String.valueOf(term1*tem2);
+            return String.valueOf(term1*term2);
         }
         else if(operator=='+') {
-            return String.valueOf(term1 + tem2);
+            return String.valueOf(term1 + term2);
         }
         else if(operator=='-')
         {
-            return String.valueOf(term1-tem2);
+            return String.valueOf(term1-term2);
         }
         else if(operator=='/')
         {
-            return String.valueOf(term1/tem2);
+            return String.valueOf(term1/term2);
         }
         else if(operator=='^')
         {
-            return String.valueOf(Math.pow(term1,tem2));
+            return String.valueOf(Math.pow(term1,term2));
         }
         else if(operator=='!')
         {
-            return String.valueOf(Math.sqrt(tem2));
+            return String.valueOf(Math.sqrt(term2));
         }
         return "";
     }
@@ -36,25 +36,32 @@ public class PostFix {
         String result = "";
 
         Stack<String> operands = new Stack<>();
+
         String[] chars = eq.split(" ");
+
         for(String c : chars)
         {
-           // System.out.println(c);
             if(Maths.isLetterOrNumber(c))
             {
                 operands.push(c);
             }
             if(!operands.isEmpty()&&c.length()<=1&&Maths.isOperator(c))
             {
-
                 float term2 = 0;
                 float term1 = 0;
-                try {
+
+                try
+                {
                     term2 = Float.parseFloat(operands.pop());
-                }catch (Exception e){}
-                try {
+                }
+                catch (Exception ignored){}
+
+                try
+                {
                     term1 = Float.parseFloat(operands.pop());
-                }catch (Exception e){}
+                }
+                catch (Exception ignored){}
+
                 operands.push(calculatePiece(term1,term2,c.toCharArray()[0]));
             }
 

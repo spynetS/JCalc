@@ -30,11 +30,7 @@ class InfixToPostfix
         return -1;
     }
 
-    // The main method that converts
-    // given infix expression
-    // to postfix expression.
-
-
+    //Adds spaces to the expression '5+5' => '5 + 5'
     private static String addSpaces(String eq)
     {
         Debug.error("Before spaces "+ eq);
@@ -61,32 +57,45 @@ class InfixToPostfix
         return eqWithSpaces;
     }
 
-    public static String negativeNumbers(String eq)
+    //Changes the expression so we can use negative numbers in the main method
+    // '-5*-5' => '(0-5)*(0-5)'
+    private static String negativeNumbers(String eq)
     {
-        eq = addSpaces(eq);
+        eq = addSpaces(eq); //add spaces so we can iterate throught the expression and use string instead of chars
         Debug.error("Before negative numbers controlling "+eq);
+
         String newEq = "";
         String[] strings = eq.split(" ");
+
         for(int i = 0;i<strings.length;i++)
         {
             String c = strings[i];
             if(c.equals("-"))
             {
-                try {
-                    if(!Maths.isOperator(strings[i+1]))//if the thing after the minus sign is a number {
+                try { //if index is
+                    if(!Maths.isOperator(strings[i+1]))//if the thing after the minus sign is a number
+                    {
                         try {
+                            //if there is a operator on the left of the minus then know
+                            //it is a negative number and we continue
                             if (Maths.isOperator(strings[i-1])) {
                                 newEq += "(0-"+strings[i+1]+")";
                                 i++;
                             }
                             else
                                 newEq += c;
-                        } catch (Exception e) {
-                            newEq += "(0-"+strings[i+1]+")";
+                        }
+                        //if there is no string on the left of the minus
+                        // we now it is a negative number and we continue
+                        catch (Exception e)
+                        {
+                            newEq += "(0-" + strings[i + 1] + ")";
                             i++;
                         }
+                    }
 
-                }catch (Exception e1){Debug.error("Error "+e1.toString());}
+                }
+                catch (Exception e1){Debug.error("Error "+e1.toString());}
             }
             else
             {
@@ -97,7 +106,9 @@ class InfixToPostfix
         return newEq;
     }
 
-
+    // The main method that converts
+    // given infix expression
+    // to postfix expression.
     public static String infixToPostfix(String exp)
     {
         // initializing empty String for result
@@ -167,7 +178,7 @@ class InfixToPostfix
         return result.substring(1);
     }
 
-    // Driver method
+    // Debug method
     public static void main(String[] args)
     {
         String exp = "-50*-50";

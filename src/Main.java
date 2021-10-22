@@ -19,24 +19,26 @@ public class Main {
         while(true){
             BufferedReader reader = new BufferedReader(
                     new InputStreamReader(System.in));
-            // Reading data using re
-            // adLine
+
             String exp = null;
+
             try {
                 exp = reader.readLine();
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
             PostFix pp = new PostFix();
-           if(exp.contains("="))
-           {
+
+            if(exp.contains("="))
+            {
                String var = exp.split("=")[0];
                Debug.error(exp.split("=")[1]);
                vars.put(var,Float.parseFloat(pp.getAnswer(InfixToPostfix.infixToPostfix((exp.split("=")[1])))));
 
-           }
-           else if (exp.contains("debug"))
-           {
+            }
+            else if (exp.contains("debug"))
+            {
                switch (exp.split(" ")[1])
                {
                    case "True":
@@ -49,14 +51,14 @@ public class Main {
                        break;
                }
                Debug.log("Debug mode set to "+exp.split(" ")[1]);
-           }
-           else if(exp.equals("clear"))
-           {
+            }
+            else if(exp.equals("clear"))
+            {
                //Clear console
 
-           }
-           else if(exp.equals("help"))
-           {
+            }
+            else if(exp.equals("help"))
+            {
                Debug.log("If you want to set variables write 'x=5*5' with anny letter (not words) ");
                Debug.log("To turn on debug mode write 'debug true'. To turn of debug mode write 'debug false' ");
                Debug.log("Addition is with +");
@@ -65,9 +67,9 @@ public class Main {
                Debug.log("Power of is with ^");
                Debug.log("Scare root is with !");
 
-           }
-           else
-           {
+            }
+            else
+            {
                try{
                     Map<String,Float> m = vars;
                    Debug.log(pp.getAnswer(InfixToPostfix.infixToPostfix(Maths.switchVariable(exp,m))));
@@ -77,8 +79,7 @@ public class Main {
                    Debug.log("Syntax error");
                    Debug.error(e.toString());
                }
-           }
-                //System.out.println((Maths.switchVariable(exp,"x",x)));
+            }
         }
     }
 }
