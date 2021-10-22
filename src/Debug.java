@@ -4,26 +4,23 @@ public class Debug {
 
     public static void log(String log)
     {
-        if(logging)
-        {
-            System.out.println(log);
-        }
+
+        System.out.println(log);
+
     }
     public static void log(String[] logs,String between)
     {
-        if(logging)
-        {
-            for(String log :logs)
-                System.out.print(log+between);
-        }
+
+        for(String log :logs)
+            System.out.print(log+between);
+
     }
     public static void log(String[] logs)
     {
-        if(logging)
-        {
-            for(String log :logs)
-                System.out.print(log+" ");
-        }
+
+        for(String log :logs)
+            System.out.print(log+" ");
+
     }
     public static void error(String log)
     {

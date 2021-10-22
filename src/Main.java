@@ -31,7 +31,9 @@ public class Main {
            if(exp.contains("="))
            {
                String var = exp.split("=")[0];
-                    vars.put(var,Float.parseFloat(pp.getAnswer(InfixToPostfix.infixToPostfix((exp.split("=")[1])))));
+               Debug.error(exp.split("=")[1]);
+               vars.put(var,Float.parseFloat(pp.getAnswer(InfixToPostfix.infixToPostfix((exp.split("=")[1])))));
+
            }
            else if (exp.contains("debug"))
            {
@@ -46,26 +48,29 @@ public class Main {
                        Debug.logging = false;
                        break;
                }
+               Debug.log("Debug mode set to "+exp.split(" ")[1]);
            }
            else if(exp.equals("help"))
            {
-               System.out.println("If you want to set variables write 'x=5*5' with anny letter (not words) ");
-               System.out.println("Addition is with +");
-               System.out.println("Subtraction is with -");
-               System.out.println("Multiplication is with *");
-               System.out.println("Power of is with ^");
-               System.out.println("Scare root is with !");
+               Debug.log("If you want to set variables write 'x=5*5' with anny letter (not words) ");
+               Debug.log("To turn on debug mode write 'debug true'. To turn of debug mode write 'debug false' ");
+               Debug.log("Addition is with +");
+               Debug.log("Subtraction is with -");
+               Debug.log("Multiplication is with *");
+               Debug.log("Power of is with ^");
+               Debug.log("Scare root is with !");
 
            }
            else
            {
                try{
                     Map<String,Float> m = vars;
-                    System.out.println(pp.getAnswer(InfixToPostfix.infixToPostfix(Maths.switchVariable(exp,m))));
+                   Debug.log(pp.getAnswer(InfixToPostfix.infixToPostfix(Maths.switchVariable(exp,m))));
                 }
                catch(Exception e)
                {
                    Debug.log("Syntax error");
+                   Debug.error(e.toString());
                }
            }
                 //System.out.println((Maths.switchVariable(exp,"x",x)));

@@ -59,6 +59,7 @@ public class PostFix {
             }
 
         }
+        Debug.error("postfix result"+ operands.peek());
         if(operands.size()<=1)
             return operands.peek();
         else

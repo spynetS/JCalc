@@ -37,6 +37,7 @@ class InfixToPostfix
 
     public static String negativeNumbers(String eq)
     {
+        Debug.error("Before negative numbers controlling "+eq);
         String newEq = "";
         for(int i = 0;i<eq.length();i++)
         {
@@ -65,7 +66,7 @@ class InfixToPostfix
                 newEq += c;
             }
         }
-        Debug.error(newEq);
+        Debug.error("After negative numbers controlling "+newEq);
         return newEq;
     }
 
