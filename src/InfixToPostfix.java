@@ -35,11 +35,45 @@ class InfixToPostfix
     // to postfix expression.
 
 
+    public static String negativeNumbers(String eq)
+    {
+        String newEq = "";
+        for(int i = 0;i<eq.length();i++)
+        {
+            char c = eq.charAt(i);
+
+            if(c=='-')
+            {
+                try {
+                    if(!Maths.isOperator(eq.charAt(i+1))) {
+                        try {
+                            if (Maths.isOperator(eq.charAt(i - 1))) {
+                                newEq += "(0-"+eq.charAt(i+1)+")";
+                                i++;
+                            }
+                        } catch (Exception e) {
+                            newEq += "(0-"+eq.charAt(i+1)+")";
+                            i++;
+                        }
+                    }
+                }catch (Exception e1){}
+            }
+            else
+            {
+                newEq += c;
+            }
+        }
+        System.out.println(newEq);
+        return newEq;
+    }
+
 
     public static String infixToPostfix(String exp)
     {
         // initializing empty String for result
         String result = new String("");
+
+        exp = negativeNumbers(exp);
 
         // initializing empty stack
         Stack<Character> stack = new Stack<>();
@@ -48,19 +82,13 @@ class InfixToPostfix
         {
             char c = exp.charAt(i);
 
-            if((!Maths.isOperator(String.valueOf(c))&&i>0&&exp.charAt(i-1)=='-'))
-            {
-                System.out.println("Negative number "+exp.charAt(i));
-
-            }
-
             if(c == '!')
                 result += " 0";
             // If the scanned character is an
             // operand, add it to output.
             if (Character.isLetterOrDigit(c)||c=='.'){
 
-                //If its a number we dont add a space
+                //If its a number we don't add a space
                 if(i>0&&Prec(exp.charAt(i-1))==-1&&exp.charAt(i-1)!='(') {
                     result += c;
                 }
@@ -105,14 +133,14 @@ class InfixToPostfix
                 return "Invalid Expression";
             result += " "+stack.pop();
         }
-        //System.out.println(result.substring(1));
+        System.out.println("result "+result.substring(1));
         return result.substring(1);
     }
 
     // Driver method
     public static void main(String[] args)
     {
-        String exp = "(0-3)+(0-4)";
+        String exp = "-3*-4";
         PostFix pp = new PostFix();
         System.out.println(exp);
         System.out.println(infixToPostfix(exp));

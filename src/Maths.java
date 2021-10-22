@@ -6,26 +6,17 @@ public class Maths {
 
     public static boolean isLetterOrNumber(String number)
     {
-        char[] chars = number.toCharArray();
-        for(char ch:chars)
-        {
-            for(char c:operators)
-            {
-                try
-                {   //just to se if we can convert the number into a float
-                    //if we cant we know it is not a number
-                    float tester = Float.parseFloat(String.valueOf(ch));
-                    //System.out.println("float");
-                    return true;
-                }
-                catch (Exception e){
-                    return false;
-                }
-            }
+        try
+        {   //just to se if we can convert the number into a float
+            //if we cant we know it is not a number
+            float tester = Float.parseFloat(number);
+            //System.out.println("float");
+            return true;
         }
-        return true;
+        catch (Exception e){
+            return false;
+        }
     }
-
     public static String switchVariable(String eq, Map<String, Float> vars)
     {
         char[] chars = eq.toCharArray();
@@ -53,6 +44,15 @@ public class Maths {
                 if(ch==c)
                     return true;
             }
+        }
+        return false;
+    }
+    public static boolean isOperator(char number)
+    {
+        for(char c:operators)
+        {
+            if(number==c)
+                return true;
         }
         return false;
     }
