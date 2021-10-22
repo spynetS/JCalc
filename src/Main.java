@@ -31,7 +31,6 @@ public class Main {
            if(exp.contains("="))
            {
                String var = exp.split("=")[0];
-               if(!vars.containsKey(var))
                     vars.put(var,Float.parseFloat(pp.getAnswer(InfixToPostfix.infixToPostfix((exp.split("=")[1])))));
            }
            else if(exp.equals("help"))

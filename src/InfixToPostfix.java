@@ -35,6 +35,7 @@ class InfixToPostfix
     // to postfix expression.
 
 
+
     public static String infixToPostfix(String exp)
     {
         // initializing empty String for result
@@ -45,8 +46,14 @@ class InfixToPostfix
 
         for (int i = 0; i<exp.length(); ++i)
         {
-
             char c = exp.charAt(i);
+
+            if((!Maths.isOperator(String.valueOf(c))&&i>0&&exp.charAt(i-1)=='-'))
+            {
+                System.out.println("Negative number "+exp.charAt(i));
+
+            }
+
             if(c == '!')
                 result += " 0";
             // If the scanned character is an
@@ -105,7 +112,7 @@ class InfixToPostfix
     // Driver method
     public static void main(String[] args)
     {
-        String exp = "10.0+2";
+        String exp = "(0-3)+(0-4)";
         PostFix pp = new PostFix();
         System.out.println(exp);
         System.out.println(infixToPostfix(exp));
