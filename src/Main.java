@@ -33,6 +33,20 @@ public class Main {
                String var = exp.split("=")[0];
                     vars.put(var,Float.parseFloat(pp.getAnswer(InfixToPostfix.infixToPostfix((exp.split("=")[1])))));
            }
+           else if (exp.contains("debug"))
+           {
+               switch (exp.split(" ")[1])
+               {
+                   case "True":
+                   case "true":
+                       Debug.logging = true;
+                       break;
+                   case "False":
+                   case "false":
+                       Debug.logging = false;
+                       break;
+               }
+           }
            else if(exp.equals("help"))
            {
                System.out.println("If you want to set variables write 'x=5*5' with anny letter (not words) ");
@@ -51,7 +65,7 @@ public class Main {
                 }
                catch(Exception e)
                {
-                   System.out.println("Syntax error");
+                   Debug.log("Syntax error");
                }
            }
                 //System.out.println((Maths.switchVariable(exp,"x",x)));

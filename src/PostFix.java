@@ -4,7 +4,7 @@ public class PostFix {
 
     String calculatePiece(float term1,float tem2,char operator)
     {
-        System.out.println(term1+" t "+ tem2);
+        Debug.error("calculation "+term1+" "+operator+" "+tem2);
         if(operator=='*')
         {
             return String.valueOf(term1*tem2);

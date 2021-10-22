@@ -51,6 +51,8 @@ class InfixToPostfix
                                 newEq += "(0-"+eq.charAt(i+1)+")";
                                 i++;
                             }
+                            else
+                                newEq += c;
                         } catch (Exception e) {
                             newEq += "(0-"+eq.charAt(i+1)+")";
                             i++;
@@ -63,7 +65,7 @@ class InfixToPostfix
                 newEq += c;
             }
         }
-        System.out.println(newEq);
+        Debug.error(newEq);
         return newEq;
     }
 
@@ -133,7 +135,7 @@ class InfixToPostfix
                 return "Invalid Expression";
             result += " "+stack.pop();
         }
-        System.out.println("result "+result.substring(1));
+        Debug.error("result "+result.substring(1));
         return result.substring(1);
     }
 
