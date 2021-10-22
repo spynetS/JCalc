@@ -1,9 +1,6 @@
-import jdk.nashorn.internal.runtime.ECMAException;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,6 +13,7 @@ public class Main {
     private static void AddConstatns()
     {
         vars.put("pi",3.141592653589793238f);
+        vars.put("e",2.7182818284590452353f);
     }
 
     public static void main(String[] args)
@@ -26,7 +24,7 @@ public class Main {
             BufferedReader reader = new BufferedReader(
                     new InputStreamReader(System.in));
 
-            String exp = null;
+            String exp = "";
 
             try {
                 exp = reader.readLine();
@@ -35,8 +33,7 @@ public class Main {
             }
 
             PostFix pp = new PostFix();
-
-            if(exp.contains("="))
+            if(exp.contains("=")&&!exp.split("=")[0].equals("e")&&!exp.split("=")[0].equals("pi"))
             {
                String var = exp.split("=")[0];
                Debug.error(exp.split("=")[1]);
@@ -65,7 +62,7 @@ public class Main {
             }
             else if(exp.equals("help"))
             {
-               Debug.log("If you want to set variables write 'x=5*5' with anny letter (not words) ");
+               Debug.log("If you want to set variables write 'x=5*5' with anny letter ");
                Debug.log("To turn on debug mode write 'debug true'. To turn of debug mode write 'debug false' ");
                Debug.log("Addition is with +");
                Debug.log("Subtraction is with -");
