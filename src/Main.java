@@ -62,13 +62,15 @@ public class Main {
             }
             else if(exp.equals("help"))
             {
-               Debug.log("If you want to set variables write 'x=5*5' with anny letter ");
-               Debug.log("To turn on debug mode write 'debug true'. To turn of debug mode write 'debug false' ");
-               Debug.log("Addition is with +");
-               Debug.log("Subtraction is with -");
-               Debug.log("Multiplication is with *");
-               Debug.log("Power of is with ^");
-               Debug.log("Scare root is with !");
+                Debug.log("If you want to set variables write 'x=5*5' with anny letter ");
+                Debug.log("Write pi to get the constant pi");
+                Debug.log("Write e to get the constant e");
+                Debug.log("To turn on debug mode write 'debug true'. To turn of debug mode write 'debug false' ");
+                Debug.log("Addition is with +");
+                Debug.log("Subtraction is with -");
+                Debug.log("Multiplication is with *");
+                Debug.log("Power of is with ^");
+                Debug.log("Scare root is with !");
 
             }
             else
