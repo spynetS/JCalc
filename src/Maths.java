@@ -18,7 +18,7 @@ public class Maths {
         }
     }
     //
-    public static String switchVariable(String eq, Map<String, Float> vars)
+    public static String switchVariable(String eq, Map<String, Double> vars)
     {
         String[] chars = InfixToPostfix.addSpaces(eq).split(" ");
         String newString = "";
@@ -26,7 +26,7 @@ public class Maths {
         {
                 if(vars.containsKey(c))
                 {
-                    newString+= Float.toString(vars.get(c));
+                    newString+= Double.toString(vars.get(c));
                 }
                 else newString+=c;
 

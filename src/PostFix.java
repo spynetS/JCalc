@@ -2,7 +2,7 @@ import java.util.Stack;
 
 public class PostFix {
 
-    String calculatePiece(float term1,float term2,char operator)
+    String calculatePiece(double term1,double term2,char operator)
     {
         Debug.error("calculation "+term1+" "+operator+" "+term2);
         if(operator=='*')
@@ -47,18 +47,18 @@ public class PostFix {
             }
             if(!operands.isEmpty()&&c.length()<=1&&Maths.isOperator(c))
             {
-                float term2 = 0;
-                float term1 = 0;
+                double term2 = 0;
+                double term1 = 0;
 
                 try
                 {
-                    term2 = Float.parseFloat(operands.pop());
+                    term2 = Double.parseDouble(operands.pop());
                 }
                 catch (Exception ignored){}
 
                 try
                 {
-                    term1 = Float.parseFloat(operands.pop());
+                    term1 = Double.parseDouble(operands.pop());
                 }
                 catch (Exception ignored){}
 

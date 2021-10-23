@@ -8,12 +8,12 @@ public class Main {
 
     //Main will take care of in and output
     String lastAnswer;
-    static HashMap<String,Float> vars = new HashMap<String, Float>();
+    static HashMap<String,Double> vars = new HashMap<String, Double>();
 
     private static void AddConstatns()
     {
-        vars.put("pi",3.141592653589793238f);
-        vars.put("e",2.7182818284590452353f);
+        vars.put("pi",3.1415926535897932384626433832795);
+        vars.put("e",2.7182818284590452353602874713527);
     }
 
     public static void main(String[] args)
@@ -37,7 +37,7 @@ public class Main {
             {
                String var = exp.split("=")[0];
                Debug.error(exp.split("=")[1]);
-               vars.put(var,Float.parseFloat(pp.getAnswer(InfixToPostfix.infixToPostfix((exp.split("=")[1])))));
+               vars.put(var,Double.parseDouble(pp.getAnswer(InfixToPostfix.infixToPostfix((exp.split("=")[1])))));
 
             }
             else if (exp.contains("debug"))
@@ -76,7 +76,7 @@ public class Main {
             else
             {
                try{
-                    Map<String,Float> m = vars;
+                    Map<String,Double> m = vars;
                    Debug.log(pp.getAnswer(InfixToPostfix.infixToPostfix(Maths.switchVariable(exp,m))));
                 }
                catch(Exception e)
