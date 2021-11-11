@@ -73,12 +73,12 @@ class InfixToPostfix
             if(c.equals("-"))
             {
                 try { //if index is
-                    if(!Maths.isOperator(strings[i+1]))//if the thing after the minus sign is a number
+                    if(!Maths.hasOperator(strings[i+1]))//if the thing after the minus sign is a number
                     {
                         try {
                             //if there is a operator on the left of the minus then know
                             //it is a negative number and we continue
-                            if (Maths.isOperator(strings[i-1])) {
+                            if (Maths.hasOperator(strings[i-1])) {
                                 newEq += "(0-"+strings[i+1]+")";
                                 i++;
                             }

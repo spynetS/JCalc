@@ -34,7 +34,7 @@ public class Maths {
         return newString;
     }
 
-    public static boolean isOperator(String number)
+    public static boolean hasOperator(String number)
     {
         char[] chars = number.toCharArray();
         char g;

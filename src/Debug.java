@@ -8,11 +8,10 @@ public class Debug {
         System.out.println(log);
 
     }
-    public static void log(String[] logs,String between)
+    public static void log(String logs,String between)
     {
 
-        for(String log :logs)
-            System.out.print(log+between);
+        System.out.print(logs+between);
 
     }
     public static void log(String[] logs)

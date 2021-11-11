@@ -7,13 +7,58 @@ import java.util.Map;
 public class Main {
 
     //Main will take care of in and output
-    String lastAnswer;
+    static String lastAnswer = "0";
     static HashMap<String,Double> vars = new HashMap<String, Double>();
 
     private static void AddConstatns()
     {
         vars.put("pi",3.1415926535897932384626433832795);
         vars.put("e",2.7182818284590452353602874713527);
+        vars.put("ans",0.0);
+    }
+
+    private static boolean isExpression(String exp)
+    {
+        if(Maths.isOperator(exp.toCharArray()[0]))
+        {
+           return false;
+        }
+        return true;
+    }
+
+    private static void calculate(String exp,PostFix pp)
+    {
+        try{
+            Map<String,Double> m = vars;
+
+            if(isExpression(exp))
+            {
+                lastAnswer = pp.getAnswer(InfixToPostfix.infixToPostfix(Maths.switchVariable(exp,m)));
+                Debug.log(lastAnswer);
+                vars.put("ans", Double.valueOf(lastAnswer));
+
+            }
+            else
+            {
+                exp = lastAnswer +exp;
+                lastAnswer = pp.getAnswer(InfixToPostfix.infixToPostfix(Maths.switchVariable(exp,m)));
+                Debug.log(lastAnswer);
+                vars.put("ans", Double.valueOf(lastAnswer));
+
+            }
+
+
+        }
+        catch(Exception e)
+        {
+            Debug.log("Syntax error");
+            Debug.error(e.toString());
+        }
+    }
+
+    private static double getVarValue(String var_)
+    {
+        return vars.get(var_);
     }
 
     public static void main(String[] args)
@@ -33,11 +78,15 @@ public class Main {
             }
 
             PostFix pp = new PostFix();
-            if(exp.contains("=")&&!exp.split("=")[0].equals("e")&&!exp.split("=")[0].equals("pi"))
+            if(exp.contains("=")&&!exp.split("=")[0].equals("e")&&!exp.split("=")[0].equals("pi")&&!exp.split("=")[0].equals("ans"))
             {
                String var = exp.split("=")[0];
                Debug.error(exp.split("=")[1]);
-               vars.put(var,Double.parseDouble(pp.getAnswer(InfixToPostfix.infixToPostfix((exp.split("=")[1])))));
+
+               String value = exp.split("=")[1];
+
+               vars.put(var,Double.parseDouble(pp.getAnswer(InfixToPostfix.infixToPostfix(((vars.get(value)!=null)? String.valueOf(vars.get(value)) : value)))));
+
 
             }
             else if (exp.contains("debug"))
@@ -57,7 +106,6 @@ public class Main {
             }
             else if(exp.equals("clear"))
             {
-               //Clear console
 
             }
             else if(exp.equals("help"))
@@ -73,17 +121,11 @@ public class Main {
                 Debug.log("Scare root is with !");
 
             }
+
+            //Counting
             else
             {
-               try{
-                    Map<String,Double> m = vars;
-                   Debug.log(pp.getAnswer(InfixToPostfix.infixToPostfix(Maths.switchVariable(exp,m))));
-                }
-               catch(Exception e)
-               {
-                   Debug.log("Syntax error");
-                   Debug.error(e.toString());
-               }
+                calculate(exp,pp);
             }
         }
     }

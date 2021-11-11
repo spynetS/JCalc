@@ -5,6 +5,7 @@ public class PostFix {
     String calculatePiece(double term1,double term2,char operator)
     {
         Debug.error("calculation "+term1+" "+operator+" "+term2);
+
         if(operator=='*')
         {
             return String.valueOf(term1*term2);
@@ -45,7 +46,7 @@ public class PostFix {
             {
                 operands.push(c);
             }
-            if(!operands.isEmpty()&&c.length()<=1&&Maths.isOperator(c))
+            if(!operands.isEmpty()&&c.length()<=1&&Maths.hasOperator(c))
             {
                 double term2 = 0;
                 double term1 = 0;
