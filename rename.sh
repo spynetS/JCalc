@@ -19,12 +19,12 @@ if [ ! -d "$SEARCH_DIR" ]; then
     exit 1
 fi
 
-# Find files containing the search pattern and move them with .bak extension
-find "$SEARCH_DIR" -type f -name "*$SEARCH_PATTERN*" | while read -r file; do
+# Find files and symbolic links containing the search pattern and move them with .bak extension
+find "$SEARCH_DIR" \( -type f -o -type l \) -name "*$SEARCH_PATTERN*" | while read -r file; do
     # Define the new filename with .bak extension
-    new_file="${file}.bak"
+    new_file="${file}${BACKUP_EXTENSION}"
     
-    # Move and rename the file
+    # Move and rename the file or link
     echo "Moving '$file' to '$new_file'"
     mv "$file" "$new_file"
 done
